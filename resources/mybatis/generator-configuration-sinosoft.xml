@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<classPathEntry location="D:/sinosoft/project/cis/axa/src/main/webapp/WEB-INF/lib/ojdbc14.jar" />
+  <context id="context1"  targetRuntime="MyBatis3">
+     <jdbcConnection 
+        driverClass="oracle.jdbc.driver.OracleDriver"
+    	connectionURL="jdbc:oracle:thin:@84.238.13.16:1521:UMP"
+    	userId="UMP_USR" password="password1" />
+    <!-- 可变动部分 -->
+    <!-- 
+    <javaModelGenerator targetPackage="com.sinosoft.ummp.common.domain.model" targetProject="ummp-cis" />
+    <sqlMapGenerator targetPackage="com.sinosoft.ummp.common.domain.model" targetProject="ummp-cis" />
+    <javaClientGenerator targetPackage="com.sinosoft.ummp.common.domain.mapper" targetProject="ummp-cis" type="XMLMAPPER" />
+     -->
+    <javaModelGenerator targetPackage="com.sinosoft.ummp.domain.model" targetProject="axa-icp-dev-1.2.1.1/java-src" />
+    <sqlMapGenerator targetPackage="mybatis.ummp" targetProject="axa-icp-dev-1.2.1.1/resources" /><!-- Xml文件 -->
+    <javaClientGenerator targetPackage="com.sinosoft.ummp.domain.mapper" targetProject="axa-icp-dev-1.2.1.1/java-src" type="XMLMAPPER" />
+    <!-- 去掉Example类配置 -->
+    <!-- 
+    <table schema="" tableName="T_DEF_PLAT_COM"></table>
+    <table schema="" tableName="T_DEF_PLAT_ROLE_RELA"></table>
+     -->
+    <!-- <table schema="" tableName="T_DEF_JOB_LOG"></table> -->
+    <!-- <table schema="" tableName="T_DEF_USER_TRACE"></table> -->
+    <!-- <table schema="" tableName="T_DEF_CODE_MAPPING"></table>  -->
+    
+    <table schema="" tableName="t_def_action_trace"></table>
+  </context>
+</generatorConfiguration>

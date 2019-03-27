@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.sinosoft.platform.core.domain.mapper.RoleServiceMapper">
+    <select id="queryPrivilageByRoleID" parameterType="com.sinosoft.platform.core.domain.model.DefRole" resultType="com.sinosoft.platform.core.domain.model.DefPrivilege">
+         
+        SELECT DISTINCT 
+        	   TDP.ID   		 Id,
+		       TDP.PRIVILEGECODE privilegecode,
+		       TDP.PRIVILEGENAME privilegename,
+		       TDP.PRIVILEGETYPE privilegetype,
+		       TDP.URL           Url,
+		       TDP.PID           Pid,
+		       TDP.METHOD        Method,
+		       TDP.PRE           Pre,
+		       TDP.NEXT          Next,
+		       TDP.NUM           Num
+		  FROM T_DEF_PRIVILEGE TDP
+		 INNER JOIN T_DEF_ROLE_PRIVILEGE_RELA TDRPR
+		    ON TDP.ID = TDRPR.PRIVILEGE_ID
+		 INNER JOIN T_DEF_ROLE TDR
+		    ON TDRPR.ROLE_ID = TDR.ID
+		 WHERE TDR.ID =#{id,jdbcType=DECIMAL}
+		 ORDER BY NUM
+    </select>   
+    
+    
+    <select id="queryRoleByRoleCode" parameterType="com.sinosoft.platform.core.domain.model.DefRole" resultType="com.sinosoft.platform.core.domain.model.DefRole">
+       
+       SELECT TDR.ID        	"roleId",
+       		  TDR.ROLECODE      "rolecode",
+       		  TDR.ROLENAME      "rolename"
+		  FROM T_DEF_ROLE TDR
+		 WHERE TDR.ROLECODE = #{rolecode}
+        
+    </select> 
+    
+    <select id="queryRoleByRoleName" parameterType="com.sinosoft.platform.core.domain.model.DefRole" resultType="com.sinosoft.platform.core.domain.model.DefRole">
+        select TDR.ID        	"roleId",
+       		  TDR.ROLECODE      "rolecode",
+       		  TDR.ROLENAME      "rolename"
+		  from t_def_role tdr
+		  where tdr.rolename = #{rolename}
+    </select>   
+    
+    <sql id="queryRoleListInfoSQL">
+    
+    	SELECT TDR.ID   "id",
+		       TDR.ROLECODE "rolecode",
+		       TDR.ROLENAME "rolename"
+		  FROM T_DEF_ROLE TDR
+		WHERE 1 = 1
+    	<if test="roleName and roleCode!=''">
+		   	and TDR.rolecode like '%' || #{roleCode,jdbcType=VARCHAR} || '%'
+		</if>
+		<if test="roleName and roleName!=''">
+		   	and TDR.rolename like '%'  || #{roleName,jdbcType=VARCHAR} || '%'
+		</if>
+    </sql>
+    
+     <!-- 菜单信息列表查询（总记录数） -->
+	<select id="queryRoleListInfoCounts" resultType="java.lang.Integer" parameterType="java.util.Map" >
+		select count(1) from 
+		(
+      	  	<include refid="queryRoleListInfoSQL"/>
+        )
+	</select>
+	
+	<!-- 菜单信息列表查询（分页查询） -->
+	<select id="queryRoleListInfoPages" resultType="java.util.Map" parameterType="java.util.Map" >
+        select tAlias.* from
+		(
+	         select nAlias.*, rownum r_rownum from
+	         (
+		         <include refid="queryRoleListInfoSQL"/>
+		         
+			 ) nAlias
+		) tAlias where r_rownum >=#{queryStartIndex} and #{queryEndIndex} >= r_rownum
+	</select>
+    
+</mapper>  

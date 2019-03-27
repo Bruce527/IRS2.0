@@ -1,0 +1,11 @@
+insert into t_def_code_dict (CODE_TYPE, CODE, CODE_NAME, CODE_ALIAS, COM_ID, ES_STATUS, CODE_GROUP_RELA, CODE_STATUS_RELA)
+values ('IMPL_TYPE', 'MSG_SPECLASS', '特殊类的处理', '特殊类的处理', null, 1, null, null);
+commit;
+
+
+
+
+1	BUSS_TYPE	SHIAC01	个险理赔信息同步上传		5	1		
+2	BUSS_TYPE	SHIAN0201	承保信息异步上传（不拆单）		5	1		
+3	BUSS_TYPE	SHIAN020203	承保信息异步上传（拆单拆单结束）		5	1		
+

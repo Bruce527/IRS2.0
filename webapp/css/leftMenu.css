@@ -1,0 +1,127 @@
+
+ .personal_menu{
+	/* width:200px; */
+	/* float:left; */
+}
+
+ .personal_menu .menu_main .menu_title{
+	font-weight:bold;
+	display: block;
+	background:#fff;
+	font-size:12px;
+	text-align:left;
+	border:1px solid #d2e0e6;
+}
+
+ .personal_menu .menu_main .menu_title .menu_title_link{
+	padding-left:30px;
+	display: block;
+	height:36px;
+	line-height:39px;
+	color:#c7000a;
+	background: url(../img/icon1.png) 10px no-repeat;
+}
+
+
+ .personal_menu .menu_main .menu_item{
+	font-weight:bold;
+	font-size:12px;
+	display: block;
+	background:#fff;
+	border:1px solid #d2e0e6;
+	border-top:0;
+}
+
+ .personal_menu .menu_main .menu_item .menu_link{
+	display:block;
+	height:36px;
+	line-height:36px;
+	padding-left:30px;
+	color:#7e7e7e;
+	background: url(../img/arr1.png) 14px no-repeat;
+}
+ .personal_menu .menu_main .select .menu_link{
+	color:#c7000a;
+	background: url(../img/arr2.png) 14px no-repeat;
+}
+
+
+ .personal_menu .menu_main .menu_item.select,  .personal_menu .menu_main .menu_item:hover{
+	background:#f0f6fa;
+	cursor:pointer;
+}
+
+
+ .personal_menu .menu_main .submenu .submenu_item{
+	padding:0 5px;
+	background:#f0f6fa;
+	font-weight:normal;
+}
+
+ .personal_menu .menu_main .submenu .submenu_item a{
+	display:block;
+	height:32px;
+	padding-left:31px;
+	line-height:32px;
+	color:#696969;
+	border-bottom:1px #d2e0e6 solid;
+}
+
+ .personal_menu .menu_main .submenu .submenu_item.last a{
+	border-top:1px #d2e0e6 solid;
+	border-bottom:none;
+}
+
+ .personal_menu .menu_main .submenu .submenu_item:hover a, .personal_menu .menu_main .submenu .submenu_item .submenu2 .submenu_item2:hover a{
+	color:#c7000a;
+}
+ .personal_menu .menu_main .submenu .submenu_item.select a, .personal_menu .menu_main .submenu .submenu_item .submenu2 .submenu_item2.select2 a{
+	border-bottom:none;
+	color:#c7000a;
+}
+ .personal_menu .menu_main .menu_item.select .submenu, .personal_menu .menu_main .menu_item.select .submenu2{
+	display: block;
+	border-top:1px solid #d2e0e6;	
+	position:relative;
+}
+ .personal_menu .menu_main .menu_item.select .submenu2{
+	padding-left:15px;	
+}
+ .personal_menu .menu_main .menu_item.select .submenu2 a{
+
+	color:#696969;
+}
+
+ .personal_content{
+	height:725px;
+	min-width:1280px;
+}
+.content_main{
+	padding-left:175px;
+}
+ .personal_content .nav_index{
+	height:36px;
+	padding-left:175px;
+}
+ .personal_content .nav_index li{
+	line-height:38px;
+	font-size:12px;
+	display:inline;
+}
+
+ .personal_content .nav_index li.right{
+	float:right;
+	padding-right:20px;
+}
+ .personal_content .nav_index li.right span{
+	color:#696969;
+}
+ .nav_index li a{
+	color:#696969;
+}
+ .nav_index li.at a{
+	color:#c7000a;
+}
+
+
+

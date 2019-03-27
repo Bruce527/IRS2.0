@@ -1,0 +1,17 @@
+
+/*table*/
+.top_table table{background:#f6f9fa;font-size:12px;overflow:hidden;}
+.top_table table td{border-right:1px solid #b7cfe1;border-bottom:1px solid #b7cfe1;height:29px;line-height:17px;}
+.table_input{margin-left:10px;height:16px;border:1px solid #95c2f0;width:160px;text-align: left;}
+.table_select{margin-left:10px;height:22px;border:1px solid #95c2f0;width:152px;text-align: left;}
+.table_text{background:#f0f6fa;padding-right:10px;text-align: right;}
+.table_text2{background:#f0f6fa;padding-right:10px;width: 20%; text-align: right;}
+.e-cis_button{margin-top:5px;margin-left:5px;}
+.botton_title{font-size:12px;text-align: right;font-weight: bold;color: #0E2D5F;}
+
+/*table td*/
+.table_title{background:#f0f6fa;padding-right:10px;text-align: right;width: 15%;}
+.table_td_input{width: 35%;text-align: left;}
+
+.fieldset{margin-left:10px;width:80%;border:1px solid #95c2f0;border-color:black; text-align: left;}
+.table_inputarea{margin-left:10px;border:1px solid #95c2f0;text-align: left;}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>  
+		<!-- 别名申明，在Mapper中可以直接用其别名 -->
+        <typeAlias alias="User" type="com.sinosoft.platform.core.domain.model.DefUser" />
+        <typeAlias alias="Scheduleinfo" type="com.sinosoft.platform.quartz.domain.model.Scheduleinfo" />
+        <typeAlias alias="LDCode" type="com.sinosoft.platform.core.domain.model.TDefCodeDict" />
+        <typeAlias alias="LDCodeMapping" type="com.sinosoft.platform.core.domain.model.TDefCodeMapping" />
+        <typeAlias alias="sqlAdapter" type="com.sinosoft.platform.core.domain.model.SqlAdapter"></typeAlias>
+    </typeAliases>  
+	<mappers>
+		<!-- 申明特殊位置未进行自动扫描或者扫描不到的 XXMapper.xml -->
+		<!-- <mapper resource="mybatis/sinosoft/XXMapper.xml"/> -->  
+    	<!-- <mapper resource="mybatis/ummp/XXMapper.xml"/> --> 
+	</mappers>
+</configuration>

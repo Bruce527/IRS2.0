@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean name="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="applicationContextSchedulerContextKey" value="applicationContext" />
+		<property name="configLocation" value="classpath:config/quartz.properties" />
+		<!--这个是必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+		<property name="startupDelay" value="3" />
+		<!--这个是可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
+		<property name="overwriteExistingJobs" value="true" />
+		<property name="jobDetails">
+			<list>
+			    <ref bean="extractService_send" />
+				<ref bean="ShiaCusSendService_send" />
+				<ref bean="ShiaCusService_Query" />
+				<ref bean="SysnPolService_Query" />
+				<ref bean="SysnPolService_Send" />
+				<ref bean="SysnPolService_SendC" />
+				<ref bean="ShiaTecService_Send" />
+			</list>
+		</property>
+	</bean>
+	<bean id="extractService_send" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="ExtractService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="extract"  />
+		<property name="description" value="提数"/>
+	</bean>
+	
+	<bean id="ShiaCusSendService_send" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="ShiaCusSendService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="cusSend"  />
+		<property name="description" value="客户信息同步异步上载"/>
+	</bean>
+	<bean id="ShiaCusService_Query" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="ShiaCusQueryService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="CustSysnQuery"  />
+		<property name="description" value="客户信息异步报送结果查询"/>
+	</bean>
+	<bean id="SysnPolService_Query" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="SysnPolQueryService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="PolSysnQuery"  />
+		<property name="description" value="承保信息异步报送结果查询"/>
+	</bean>
+	<bean id="SysnPolService_Send" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="SysnPolSendService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="PolSysnSend"  />
+		<property name="description" value="承保信息异步报送"/>
+	</bean>	
+	<bean id="SysnPolService_SendC" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="SysnPolSendChService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="PolSysnSendC"  />
+		<property name="description" value="核保承保同步上载"/>
+	</bean>	
+	<bean id="ShiaTecService_Send" class="com.sinosoft.platform.core.spring.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- shouldRecover属性为true，则当Quartz服务被中止后，再次启动任务时会尝试恢复执行之前未完成的所有任务-->
+		<property name="shouldRecover" value="true" />
+		<property name="durable" value="true" />
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="ShiaTecSendService" />
+		<!-- 类中的方法 -->
+		<property name="targetMethod" value="TecSysnSend"  />
+		<property name="description" value="保费保全理赔同步上载"/>
+	</bean>
+	<!-- 参数对象定义自动注入 -->
+	<!-- <bean id="paramPojo" class="com.sinosoft.platform.core.domain.pojo.ParamPOJO"></bean> -->
+</beans>

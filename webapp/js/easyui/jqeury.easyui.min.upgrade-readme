@@ -1,0 +1,21 @@
+设计EasyUI说明
+1、首先备份两个文件jquery.easyui.min.js & themes/icon.css
+2、将icon.css中的样式：
+.icon-delete_in{
+	background:#307172;
+}
+.icon-delete_out{
+	background:#EFEFEF;
+}
+重定义或者直接放置在升级够大easyui对应的icon.css中
+3、获取jquery.easyui.min.js的代码（8475行）
+/***
+ * 添加末尾列，用于构造删除
+ * By Darker.Wang
+ */
+cc.push("<td class=\"datagrid-td-rownumber\"><div class = \"icon-delete_out\" onmouseover=\"this.className='icon-delete_in'\" onmouseout=\"this.className='icon-delete_out'\" id='_delDiv_"+opts.id+(_601+1)+"' class=''><button class='icon-delete' onclick =\"deleteRow("+(_601+1)+")\"/></div></td>");
+//返回单元格字符串，注意这个函数内部并未把字符串放到文档流中。
+可根据By Darker.Wang搜索出。
+部分代码放置在新版EasyUI对应的jquery.easyui.min.js对应的该位置。
+
+备注，EasyUI升级

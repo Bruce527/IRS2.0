@@ -1,0 +1,25 @@
+@CHARSET "utf-8";
+
+.header .background{
+	background:url(../img/login_box.png) no repeat-x;
+	min-width:1280px;
+	height:84px;
+	margin:0 auto;
+	border-bottom:5px solid #c7000a;
+}
+img.logo{
+	margin:20px 0 0 30px;
+}
+
+.footer{
+	background:#fff;
+	min-width:100%;
+	height:30px;
+	border-top:1px solid #bca282;
+	padding-top:5px;
+	margin:5px auto 0;
+}
+p{
+	color:#8c8f90;
+	text-align:center;
+}

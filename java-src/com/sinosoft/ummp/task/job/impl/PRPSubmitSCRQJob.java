@@ -1,0 +1,79 @@
+/**
+ * 
+ */
+package com.sinosoft.ummp.task.job.impl;
+
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.sinosoft.platform.core.domain.pojo.ParamPOJO;
+import com.sinosoft.platform.core.util.DateUtils;
+import com.sinosoft.ummp.application.SubmitService;
+import com.sinosoft.ummp.application.impl.SubmitServiceImpl;
+import com.sinosoft.ummp.exception.CISException;
+import com.sinosoft.ummp.exception.CISExceptionRunable;
+import com.sinosoft.ummp.task.SuperJob;
+import com.sinosoft.ummp.task.job.SubmitJob;
+import com.sinosoft.ummp.util.UMMPContext;
+
+import config.Config;
+
+/**
+ * 保单登记报送批处理:SummaryCheckResultQuery
+ * @author Darker.Wang
+ * @date 2016-8-18 下午2:06:05
+ * @company SINOSOFT
+ */
+@Service
+public class PRPSubmitSCRQJob extends SuperJob implements SubmitJob {
+	
+	public PRPSubmitSCRQJob(){
+		//设置为报送群组
+		this.setJobGroup("JOB_SUBMIT");
+	}
+	/* (non-Javadoc)
+	 * @see com.sinosoft.ummp.task.SuperJob#excute()
+	 */
+	@Override
+	public boolean excute() {
+		// TODO Auto-generated method stub
+		try {
+			//获取前一天
+			int interval = Integer.parseInt(Config.getProperties().getProperty("PRP_INTERVAL"));
+			String startDate = DateUtils.calDate(DateUtils.getCurrentDate(),interval,"D");
+			String endDate = DateUtils.calDate(DateUtils.getCurrentDate(),interval,"D");
+			return submit(startDate,endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	/* (non-Javadoc)
+	 * @see com.sinosoft.ummp.task.job.SubmitJob#submit(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public boolean submit(String startDate, String endDate) {
+		//获取平台
+		System.out.println("================= 保单登记数据报送,汇总对账查询批处理开始 =================");
+		SubmitService service = (SubmitService) context.getBean(SubmitServiceImpl.class);
+		System.out.println("================= StartDate: "+startDate+" endDate: "+endDate+" =================");
+		try{
+			 ParamPOJO pojo = new ParamPOJO();
+			 pojo.setStartDate(startDate);
+			 pojo.setEndDate(endDate);
+			 pojo.setBussType("SummaryCheckResultQuery");
+			 service.setApplicationContext(context);
+			 Map<String,String> map =  service.submit(new BigDecimal(UMMPContext.SUBMIT_PLAT_PRP), pojo);
+			 System.out.println("================= 保单登记数据报送批处理: "+map.get("msg"));
+		}catch(Exception e){
+			new CISException(e.getMessage(),CISExceptionRunable.EXCEPTION_ERROR_L2);
+//			return false;
+		}finally{
+			System.out.println("================= 保单登记数据报送，汇总对账查询批处理结束 =================");	
+		}
+		return true;
+	}
+}

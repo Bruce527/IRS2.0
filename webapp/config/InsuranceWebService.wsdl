@@ -1,0 +1,2730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://insurance.health.ebao.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://insurance.health.ebao.com" xmlns:intf="http://insurance.health.ebao.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://dto.insurance.health.ebao.com" xmlns:tns2="http://claim.datachange.insurance.health.ebao.com" xmlns:tns3="http://asyclaim.datachange.insurance.health.ebao.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://dto.insurance.health.ebao.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://asyclaim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://insurance.health.ebao.com"/>
+   <import namespace="http://claim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AccidentResultDTO">
+    <sequence>
+     <element name="accidentResult" nillable="true" type="xsd:string"/>
+     <element name="accidentResultDate" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="ApprovalReceiptDTO">
+    <sequence>
+     <element name="clinicMoney" nillable="true" type="xsd:decimal"/>
+     <element name="clinicStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="mutualFundPayA" nillable="true" type="xsd:decimal"/>
+     <element name="mutualFundPayB" nillable="true" type="xsd:decimal"/>
+     <element name="overallFinancingPayment" nillable="true" type="xsd:decimal"/>
+     <element name="overallFinancingYearPayment" nillable="true" type="xsd:decimal"/>
+     <element name="ownExpense" nillable="true" type="xsd:decimal"/>
+     <element name="paymentA" nillable="true" type="xsd:decimal"/>
+     <element name="paymentB" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="MedicalFeeDetailDTO">
+    <sequence>
+     <element name="feeAmount" nillable="true" type="xsd:decimal"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="medicalDetailName" nillable="true" type="xsd:string"/>
+     <element name="quantity" nillable="true" type="xsd:decimal"/>
+     <element name="unit" nillable="true" type="xsd:decimal"/>
+     <element name="unitPrice" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="CostItemDTO">
+    <sequence>
+     <element name="amount" nillable="true" type="xsd:decimal"/>
+     <element name="costCategory" nillable="true" type="xsd:string"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="medicalFeeDetailDTOs" nillable="true" type="impl:ArrayOf_tns2_MedicalFeeDetailDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="DiagnosisDTO">
+    <sequence>
+     <element name="diagnosisType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="OperationDTO">
+    <sequence>
+     <element name="diagnosisDTOs" nillable="true" type="impl:ArrayOf_tns2_DiagnosisDTO"/>
+     <element name="operationCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="WesternMedicineDTO">
+    <sequence>
+     <element name="diagnosisDTOs" nillable="true" type="impl:ArrayOf_tns2_DiagnosisDTO"/>
+     <element name="westernMedicineCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BirthClinicReceiptDTO">
+    <sequence>
+     <element name="clinicDate" nillable="true" type="xsd:dateTime"/>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="feeAmount" nillable="true" type="xsd:decimal"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="BirthHospitalReceiptDTO">
+    <sequence>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="dischardeDate" nillable="true" type="xsd:dateTime"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="hospitalDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalMoney" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalStay" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClinicReceiptDTO">
+    <sequence>
+     <element name="accountBalance" nillable="true" type="xsd:decimal"/>
+     <element name="accountPayment" nillable="true" type="xsd:decimal"/>
+     <element name="balanceAnnualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="cash" nillable="true" type="xsd:decimal"/>
+     <element name="civilServants" nillable="true" type="xsd:decimal"/>
+     <element name="clinicDate" nillable="true" type="xsd:dateTime"/>
+     <element name="clinicLargePayment" nillable="true" type="xsd:decimal"/>
+     <element name="clinicMoney" nillable="true" type="xsd:decimal"/>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="disabilitySoldier" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="individualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="insurancePayment" nillable="true" type="xsd:decimal"/>
+     <element name="medicalPayment" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="ownExpense" nillable="true" type="xsd:decimal"/>
+     <element name="paymentA" nillable="true" type="xsd:decimal"/>
+     <element name="paymentB" nillable="true" type="xsd:decimal"/>
+     <element name="paymentCap" nillable="true" type="xsd:decimal"/>
+     <element name="paymentFrom" nillable="true" type="xsd:decimal"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="retirementPayment" nillable="true" type="xsd:decimal"/>
+     <element name="totalAnnualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="totalMedicalPayment" nillable="true" type="xsd:decimal"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClmCallerDTO">
+    <sequence>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="contactNo" nillable="true" type="xsd:string"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="relationshipWithClaimant" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClmClaimantDTO">
+    <sequence>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="claimantType" nillable="true" type="xsd:string"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CooperationHospitalReceiptDTO">
+    <sequence>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="dischardeDate" nillable="true" type="xsd:dateTime"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="hospitalDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalMoney" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalStay" nillable="true" type="xsd:decimal"/>
+     <element name="nrcmsReimbursementMoney" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="HospitalReceiptDTO">
+    <sequence>
+     <element name="accountPayment" nillable="true" type="xsd:decimal"/>
+     <element name="besideInsurancePayment" nillable="true" type="xsd:decimal"/>
+     <element name="cash" nillable="true" type="xsd:decimal"/>
+     <element name="civilServants" nillable="true" type="xsd:decimal"/>
+     <element name="coOrdinationFund" nillable="true" type="xsd:decimal"/>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="dischardeDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="hospitalDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalMoney" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalStay" nillable="true" type="xsd:decimal"/>
+     <element name="insurancePayment" nillable="true" type="xsd:decimal"/>
+     <element name="medicalPayment" nillable="true" type="xsd:decimal"/>
+     <element name="mutualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="ownExpense" nillable="true" type="xsd:decimal"/>
+     <element name="paymentA" nillable="true" type="xsd:decimal"/>
+     <element name="paymentB" nillable="true" type="xsd:decimal"/>
+     <element name="paymentFrom" nillable="true" type="xsd:decimal"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="totalOwnExpense" nillable="true" type="xsd:decimal"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="OrdinaryClinicReceiptDTO">
+    <sequence>
+     <element name="clinicDate" nillable="true" type="xsd:dateTime"/>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="feeAmount" nillable="true" type="xsd:decimal"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="OrdinaryHospitalReceiptDTO">
+    <sequence>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="dischardeDate" nillable="true" type="xsd:dateTime"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="hospitalDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalMoney" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalStay" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="CoveragePaymentDTO">
+    <sequence>
+     <element name="claimConclusionCode" nillable="true" type="xsd:string"/>
+     <element name="claimOpinion" nillable="true" type="xsd:string"/>
+     <element name="comcoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityClassification" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="paymentAmount" nillable="true" type="xsd:decimal"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyPaymentDTO">
+    <sequence>
+     <element name="coveragePaymentDTOs" nillable="true" type="impl:ArrayOf_tns2_CoveragePaymentDTO"/>
+     <element name="customerNo" nillable="true" type="xsd:string"/>
+     <element name="offerStatus" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+     <element name="renewalTimes" nillable="true" type="xsd:decimal"/>
+     <element name="totalPaymentAmount" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="SegmentationReceiptDTO">
+    <sequence>
+     <element name="feeAmount" nillable="true" type="xsd:decimal"/>
+     <element name="feeDeductibleAmount" nillable="true" type="xsd:decimal"/>
+     <element name="issuedUnit" nillable="true" type="xsd:string"/>
+     <element name="receiptClaimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialReceiptDTO">
+    <sequence>
+     <element name="accountBalance" nillable="true" type="xsd:decimal"/>
+     <element name="accountPayment" nillable="true" type="xsd:decimal"/>
+     <element name="cash" nillable="true" type="xsd:decimal"/>
+     <element name="civilServants" nillable="true" type="xsd:decimal"/>
+     <element name="clinicDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coOrdinationFund" nillable="true" type="xsd:decimal"/>
+     <element name="costItemDTOs" nillable="true" type="impl:ArrayOf_tns2_CostItemDTO"/>
+     <element name="disabilitySoldier" nillable="true" type="xsd:decimal"/>
+     <element name="hospitalCode" nillable="true" type="xsd:string"/>
+     <element name="individualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="insurancePayment" nillable="true" type="xsd:decimal"/>
+     <element name="medicalPayment" nillable="true" type="xsd:decimal"/>
+     <element name="mutualPayment" nillable="true" type="xsd:decimal"/>
+     <element name="operation" nillable="true" type="xsd:string"/>
+     <element name="operationDTOs" nillable="true" type="impl:ArrayOf_tns2_OperationDTO"/>
+     <element name="ownExpense" nillable="true" type="xsd:decimal"/>
+     <element name="paymentA" nillable="true" type="xsd:decimal"/>
+     <element name="paymentB" nillable="true" type="xsd:decimal"/>
+     <element name="paymentCap" nillable="true" type="xsd:decimal"/>
+     <element name="paymentFrom" nillable="true" type="xsd:decimal"/>
+     <element name="receiptNo" nillable="true" type="xsd:string"/>
+     <element name="retirementPayment" nillable="true" type="xsd:decimal"/>
+     <element name="specialMoney" nillable="true" type="xsd:decimal"/>
+     <element name="westernMedicineDTOs" nillable="true" type="impl:ArrayOf_tns2_WesternMedicineDTO"/>
+     <element name="yearAnnualCoOrdinationfund" nillable="true" type="xsd:decimal"/>
+     <element name="yearAnnualMutualPayment" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClaimInfoDTO">
+    <sequence>
+     <element name="accidentReason" nillable="true" type="xsd:string"/>
+     <element name="accidentResultDTOs" nillable="true" type="impl:ArrayOf_tns2_AccidentResultDTO"/>
+     <element name="accidentTime" nillable="true" type="xsd:dateTime"/>
+     <element name="accidentdes" nillable="true" type="xsd:string"/>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="approvalReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_ApprovalReceiptDTO"/>
+     <element name="batchNo" nillable="true" type="xsd:string"/>
+     <element name="birthClinicReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_BirthClinicReceiptDTO"/>
+     <element name="birthHospitalReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_BirthHospitalReceiptDTO"/>
+     <element name="cancelDate" nillable="true" type="xsd:dateTime"/>
+     <element name="claimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="claimDate" nillable="true" type="xsd:dateTime"/>
+     <element name="claimInvestigation" nillable="true" type="xsd:string"/>
+     <element name="claimNo" nillable="true" type="xsd:string"/>
+     <element name="clinicReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_ClinicReceiptDTO"/>
+     <element name="clmCallerDTOs" nillable="true" type="impl:ArrayOf_tns2_ClmCallerDTO"/>
+     <element name="clmClaimantDTOs" nillable="true" type="impl:ArrayOf_tns2_ClmClaimantDTO"/>
+     <element name="cooperationHospitalReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_CooperationHospitalReceiptDTO"/>
+     <element name="criticalIllnessNo" nillable="true" type="xsd:string"/>
+     <element name="endcaseDate" nillable="true" type="xsd:dateTime"/>
+     <element name="hospitalReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_HospitalReceiptDTO"/>
+     <element name="injuryReasonCode" nillable="true" type="xsd:string"/>
+     <element name="investigationEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="investigationStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="ordinaryClinicReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_OrdinaryClinicReceiptDTO"/>
+     <element name="ordinaryHospitalReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_OrdinaryHospitalReceiptDTO"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="policyPaymentDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyPaymentDTO"/>
+     <element name="registrationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="registrationNo" nillable="true" type="xsd:string"/>
+     <element name="remoteClaimInvestigation" nillable="true" type="xsd:string"/>
+     <element name="reportDate" nillable="true" type="xsd:dateTime"/>
+     <element name="reportNo" nillable="true" type="xsd:string"/>
+     <element name="segmentationReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_SegmentationReceiptDTO"/>
+     <element name="specialReceiptDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialReceiptDTO"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="treatmentAdvice" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="QueryCommonParamsDTO">
+    <sequence>
+     <element name="groupSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyGroupphDTO">
+    <sequence>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="companyNature" nillable="true" type="xsd:string"/>
+     <element name="contact" nillable="true" type="xsd:string"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="industryClassification" nillable="true" type="xsd:string"/>
+     <element name="legalRepresentative" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="numberOfUnits" nillable="true" type="xsd:decimal"/>
+     <element name="socialSecurityNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyBenefitDTO">
+    <sequence>
+     <element name="benefitDistribution" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="orderNo" nillable="true" type="xsd:string"/>
+     <element name="proportion" nillable="true" type="xsd:decimal"/>
+     <element name="relationshipWithInsured" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyAmountDTO">
+    <sequence>
+     <element name="claimRatio" nillable="true" type="xsd:decimal"/>
+     <element name="costend" nillable="true" type="xsd:decimal"/>
+     <element name="coststart" nillable="true" type="xsd:decimal"/>
+     <element name="deductible" nillable="true" type="xsd:decimal"/>
+     <element name="sectionNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyCoverageDTO">
+    <sequence>
+     <element name="effectivelyAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityClassification" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityDayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityName" nillable="true" type="xsd:string"/>
+     <element name="liabilityPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+     <element name="liabilitydayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="limitAmount" nillable="true" type="xsd:decimal"/>
+     <element name="specialPolicyAmountDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyAmountDTO"/>
+     <element name="waitingPeriod" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialUnderWritingDTO">
+    <sequence>
+     <element name="declinedReason" nillable="true" type="xsd:string"/>
+     <element name="physicalExamination" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="underwritingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="underwritingResult" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyUpcoverageDTO">
+    <sequence>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageEffectiveSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coveragePremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="coveragedayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coveragedayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coverageyearPremium" nillable="true" type="xsd:decimal"/>
+     <element name="mainAttachedFlag" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="premiumSource" nillable="true" type="xsd:string"/>
+     <element name="specialPolicyCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyCoverageDTO"/>
+     <element name="specialUnderWritingDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialUnderWritingDTO"/>
+     <element name="specificBusiness" nillable="true" type="xsd:string"/>
+     <element name="specificBusinessCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyInsuredDTO">
+    <sequence>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="anomalyInform" nillable="true" type="xsd:string"/>
+     <element name="appointedBenefit" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="customerNo" nillable="true" type="xsd:string"/>
+     <element name="empoyeeNo" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="healthFlag" nillable="true" type="xsd:string"/>
+     <element name="insuredGroupCode" nillable="true" type="xsd:string"/>
+     <element name="insuredType" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="occupationalCode" nillable="true" type="xsd:string"/>
+     <element name="offerStatus" nillable="true" type="xsd:string"/>
+     <element name="policyBenefitDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyBenefitDTO"/>
+     <element name="relationshipWithMainInsured" nillable="true" type="xsd:string"/>
+     <element name="relationshipWithPh" nillable="true" type="xsd:string"/>
+     <element name="serviceMark" nillable="true" type="xsd:string"/>
+     <element name="snOfMainInsured" nillable="true" type="xsd:string"/>
+     <element name="socialcareNo" nillable="true" type="xsd:string"/>
+     <element name="specialPolicyUpcoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyUpcoverageDTO"/>
+     <element name="subEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="subStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="workPlace" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyPersonphDTO">
+    <sequence>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="relationshipWithInsured" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyAmountDTO">
+    <sequence>
+     <element name="claimRatio" nillable="true" type="xsd:decimal"/>
+     <element name="costend" nillable="true" type="xsd:decimal"/>
+     <element name="coststart" nillable="true" type="xsd:decimal"/>
+     <element name="deductible" nillable="true" type="xsd:decimal"/>
+     <element name="sectionNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyCoverageDTO">
+    <sequence>
+     <element name="effectivelyAmount" nillable="true" type="xsd:decimal"/>
+     <element name="groupName" nillable="true" type="xsd:string"/>
+     <element name="insuredGroupCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityClassification" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityDayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityName" nillable="true" type="xsd:string"/>
+     <element name="liabilityPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+     <element name="liabilitydayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="limitAmount" nillable="true" type="xsd:decimal"/>
+     <element name="policyAmountDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyAmountDTO"/>
+     <element name="waitingPeriod" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="UnderWritingDTO">
+    <sequence>
+     <element name="declinedReason" nillable="true" type="xsd:string"/>
+     <element name="physicalExamination" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="underwritingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="underwritingResult" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyUpcoverageDTO">
+    <sequence>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageEffectiveSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coveragePremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="coveragedayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coveragedayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coverageyearPremium" nillable="true" type="xsd:decimal"/>
+     <element name="mainAttachedFlag" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="policyCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyCoverageDTO"/>
+     <element name="premiumSource" nillable="true" type="xsd:string"/>
+     <element name="specificBusiness" nillable="true" type="xsd:string"/>
+     <element name="specificBusinessCode" nillable="true" type="xsd:string"/>
+     <element name="underWritingDTOs" nillable="true" type="impl:ArrayOf_tns2_UnderWritingDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyDTO">
+    <sequence>
+     <element name="acceptDate" nillable="true" type="xsd:dateTime"/>
+     <element name="applicationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="applicationFormNo" nillable="true" type="xsd:string"/>
+     <element name="autoPaidUp" nillable="true" type="xsd:string"/>
+     <element name="businessAddress" nillable="true" type="xsd:string"/>
+     <element name="channelType" nillable="true" type="xsd:string"/>
+     <element name="coInsurance" nillable="true" type="xsd:string"/>
+     <element name="contractNo" nillable="true" type="xsd:string"/>
+     <element name="contractSource" nillable="true" type="xsd:string"/>
+     <element name="contractStatus" nillable="true" type="xsd:string"/>
+     <element name="contractType" nillable="true" type="xsd:string"/>
+     <element name="currentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="effectiveInsuredNum" nillable="true" type="xsd:decimal"/>
+     <element name="effectiveSumInsured" nillable="true" type="xsd:decimal"/>
+     <element name="formerpolicyNo" nillable="true" type="xsd:string"/>
+     <element name="leadCoInsurance" nillable="true" type="xsd:string"/>
+     <element name="organId" nillable="true" type="xsd:string"/>
+     <element name="organName" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="policyEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyGroupphDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyGroupphDTO"/>
+     <element name="policyHolderNum" nillable="true" type="xsd:decimal"/>
+     <element name="policyHolderPro" nillable="true" type="xsd:string"/>
+     <element name="policyInsuredDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyInsuredDTO"/>
+     <element name="policyLoan" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policyPersonphDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyPersonphDTO"/>
+     <element name="policyStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyUpcoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyUpcoverageDTO"/>
+     <element name="premium" nillable="true" type="xsd:decimal"/>
+     <element name="premiumDueDate" nillable="true" type="xsd:dateTime"/>
+     <element name="realTimeClaimFlag" nillable="true" type="xsd:string"/>
+     <element name="recoverDate" nillable="true" type="xsd:dateTime"/>
+     <element name="regularClearing" nillable="true" type="xsd:string"/>
+     <element name="regularClearingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="regularClearingMark" nillable="true" type="xsd:string"/>
+     <element name="rejection" nillable="true" type="xsd:string"/>
+     <element name="renewalMethod" nillable="true" type="xsd:string"/>
+     <element name="renewalTimes" nillable="true" type="xsd:decimal"/>
+     <element name="salesChannelCode" nillable="true" type="xsd:string"/>
+     <element name="salesChannelName" nillable="true" type="xsd:string"/>
+     <element name="salesCode" nillable="true" type="xsd:string"/>
+     <element name="salesName" nillable="true" type="xsd:string"/>
+     <element name="salesType" nillable="true" type="xsd:string"/>
+     <element name="specialRemark" nillable="true" type="xsd:string"/>
+     <element name="splitPolicyNo" nillable="true" type="xsd:string"/>
+     <element name="sumInsured" nillable="true" type="xsd:decimal"/>
+     <element name="suspendDate" nillable="true" type="xsd:dateTime"/>
+     <element name="terminationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="terminationReason" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+     <element name="yearPremium" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyResultDTO">
+    <sequence>
+     <element name="errorReason" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+     <element name="singleResponseCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyResultsDTO">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="policyResultDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyResultDTO"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyAsynResultDTO">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="groupSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EndorsementTypeDTO">
+    <sequence>
+     <element name="endorsementType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyGroupPHLogDTO">
+    <sequence>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="companyNature" nillable="true" type="xsd:string"/>
+     <element name="contact" nillable="true" type="xsd:string"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="industryClassification" nillable="true" type="xsd:string"/>
+     <element name="legalRepresentative" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="numberOfUnits" nillable="true" type="xsd:decimal"/>
+     <element name="socialSecurityNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyBenefitLogDTO">
+    <sequence>
+     <element name="benefitDistribution" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="orderNo" nillable="true" type="xsd:string"/>
+     <element name="proportion" nillable="true" type="xsd:decimal"/>
+     <element name="relationshipWithInsured" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyAmountLogDTO">
+    <sequence>
+     <element name="claimRatio" nillable="true" type="xsd:decimal"/>
+     <element name="costend" nillable="true" type="xsd:decimal"/>
+     <element name="coststart" nillable="true" type="xsd:decimal"/>
+     <element name="deductible" nillable="true" type="xsd:decimal"/>
+     <element name="sectionNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyCoverageLogDTO">
+    <sequence>
+     <element name="effectivelyAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityClassification" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityDayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityName" nillable="true" type="xsd:string"/>
+     <element name="liabilityPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+     <element name="liabilitydayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="limitAmount" nillable="true" type="xsd:decimal"/>
+     <element name="specialPolicyAmountLogDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyAmountLogDTO"/>
+     <element name="waitingPeriod" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialUnderWritingLogDTO">
+    <sequence>
+     <element name="declinedReason" nillable="true" type="xsd:string"/>
+     <element name="physicalExamination" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="underwritingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="underwritingResult" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SpecialPolicyUpcoverageLogDTO">
+    <sequence>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageEffectiveSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coveragePremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageSurrenderCharge" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="coveragedayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coveragedayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coverageyearPremium" nillable="true" type="xsd:decimal"/>
+     <element name="mainAttachedFlag" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="premiumSource" nillable="true" type="xsd:string"/>
+     <element name="specialPolicyCoverageLogDTO" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyCoverageLogDTO"/>
+     <element name="specialUnderWritingLogDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialUnderWritingLogDTO"/>
+     <element name="specificBusiness" nillable="true" type="xsd:string"/>
+     <element name="specificBusinessCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyInsuredLogDTO">
+    <sequence>
+     <element name="address1" nillable="true" type="xsd:string"/>
+     <element name="address2" nillable="true" type="xsd:string"/>
+     <element name="address3" nillable="true" type="xsd:string"/>
+     <element name="address4" nillable="true" type="xsd:string"/>
+     <element name="anomalyInform" nillable="true" type="xsd:string"/>
+     <element name="appointedBenefit" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="customerNo" nillable="true" type="xsd:string"/>
+     <element name="empoyeeNo" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="healthFlag" nillable="true" type="xsd:string"/>
+     <element name="insuredGroupCode" nillable="true" type="xsd:string"/>
+     <element name="insuredType" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="occupationalCode" nillable="true" type="xsd:string"/>
+     <element name="offerStatus" nillable="true" type="xsd:string"/>
+     <element name="originalCustomerNo" nillable="true" type="xsd:string"/>
+     <element name="originalSubEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyBenefitLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyBenefitLogDTO"/>
+     <element name="relationshipWithMainInsured" nillable="true" type="xsd:string"/>
+     <element name="relationshipWithPh" nillable="true" type="xsd:string"/>
+     <element name="serviceMark" nillable="true" type="xsd:string"/>
+     <element name="snOfMainInsured" nillable="true" type="xsd:string"/>
+     <element name="socialcareNo" nillable="true" type="xsd:string"/>
+     <element name="specialPolicyUpcoverageLogDTOs" nillable="true" type="impl:ArrayOf_tns2_SpecialPolicyUpcoverageLogDTO"/>
+     <element name="subEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="subStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="workPlace" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyPersonPHLogDTO">
+    <sequence>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="relationshipWithInsured" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyAmountLogDTO">
+    <sequence>
+     <element name="claimRatio" nillable="true" type="xsd:decimal"/>
+     <element name="costend" nillable="true" type="xsd:decimal"/>
+     <element name="coststart" nillable="true" type="xsd:decimal"/>
+     <element name="deductible" nillable="true" type="xsd:decimal"/>
+     <element name="sectionNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyCoverageLogDTO">
+    <sequence>
+     <element name="effectivelyAmount" nillable="true" type="xsd:decimal"/>
+     <element name="groupName" nillable="true" type="xsd:string"/>
+     <element name="insuredGroupCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityClassification" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityDayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityName" nillable="true" type="xsd:string"/>
+     <element name="liabilityPremium" nillable="true" type="xsd:decimal"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+     <element name="liabilitydayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="limitAmount" nillable="true" type="xsd:decimal"/>
+     <element name="policyAmountLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyAmountLogDTO"/>
+     <element name="waitingPeriod" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="UnderWritingLogDTO">
+    <sequence>
+     <element name="declinedReason" nillable="true" type="xsd:string"/>
+     <element name="physicalExamination" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="underwritingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="underwritingResult" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyUpcoverageLogDTO">
+    <sequence>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCurrentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageEffectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageEffectiveSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coveragePremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageSurrenderCharge" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="coveragedayAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coveragedayEffectiveAmount" nillable="true" type="xsd:decimal"/>
+     <element name="coverageyearPremium" nillable="true" type="xsd:decimal"/>
+     <element name="mainAttachedFlag" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="policyCoverageLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyCoverageLogDTO"/>
+     <element name="premiumSource" nillable="true" type="xsd:string"/>
+     <element name="specificBusiness" nillable="true" type="xsd:string"/>
+     <element name="specificBusinessCode" nillable="true" type="xsd:string"/>
+     <element name="underWritingLogDTOs" nillable="true" type="impl:ArrayOf_tns2_UnderWritingLogDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyLogDTO">
+    <sequence>
+     <element name="acceptDate" nillable="true" type="xsd:dateTime"/>
+     <element name="applicationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="applicationFormNo" nillable="true" type="xsd:string"/>
+     <element name="autoPaidUp" nillable="true" type="xsd:string"/>
+     <element name="businessAddress" nillable="true" type="xsd:string"/>
+     <element name="cancelDate" nillable="true" type="xsd:dateTime"/>
+     <element name="channelType" nillable="true" type="xsd:string"/>
+     <element name="coInsurance" nillable="true" type="xsd:string"/>
+     <element name="contractNo" nillable="true" type="xsd:string"/>
+     <element name="contractSource" nillable="true" type="xsd:string"/>
+     <element name="contractStatus" nillable="true" type="xsd:string"/>
+     <element name="contractType" nillable="true" type="xsd:string"/>
+     <element name="currentPremium" nillable="true" type="xsd:decimal"/>
+     <element name="effectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="effectiveInsuredNum" nillable="true" type="xsd:decimal"/>
+     <element name="effectiveSumInsured" nillable="true" type="xsd:decimal"/>
+     <element name="endorsementApplicationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="endorsementNo" nillable="true" type="xsd:string"/>
+     <element name="endorsementType" nillable="true" type="xsd:string"/>
+     <element name="endorsementTypeDTOs" nillable="true" type="impl:ArrayOf_tns2_EndorsementTypeDTO"/>
+     <element name="formerpolicyNo" nillable="true" type="xsd:string"/>
+     <element name="leadCoInsurance" nillable="true" type="xsd:string"/>
+     <element name="mainAttachedFlag" nillable="true" type="xsd:string"/>
+     <element name="organId" nillable="true" type="xsd:string"/>
+     <element name="organName" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="paymentMethod" nillable="true" type="xsd:string"/>
+     <element name="paymentNo" nillable="true" type="xsd:decimal"/>
+     <element name="paymentYears" nillable="true" type="xsd:decimal"/>
+     <element name="policyEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyGroupPHLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyGroupPHLogDTO"/>
+     <element name="policyHolderNum" nillable="true" type="xsd:decimal"/>
+     <element name="policyHolderPro" nillable="true" type="xsd:string"/>
+     <element name="policyInsuredLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyInsuredLogDTO"/>
+     <element name="policyLoan" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policyPersonPHLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyPersonPHLogDTO"/>
+     <element name="policyStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyUpcoverageLogDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyUpcoverageLogDTO"/>
+     <element name="premium" nillable="true" type="xsd:decimal"/>
+     <element name="premiumDueDate" nillable="true" type="xsd:dateTime"/>
+     <element name="realTimeClaimFlag" nillable="true" type="xsd:string"/>
+     <element name="recoverDate" nillable="true" type="xsd:dateTime"/>
+     <element name="regularClearing" nillable="true" type="xsd:string"/>
+     <element name="regularClearingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="regularClearingMark" nillable="true" type="xsd:string"/>
+     <element name="rejection" nillable="true" type="xsd:string"/>
+     <element name="renewalMethod" nillable="true" type="xsd:string"/>
+     <element name="renewalTimes" nillable="true" type="xsd:decimal"/>
+     <element name="salesChannelCode" nillable="true" type="xsd:string"/>
+     <element name="salesChannelName" nillable="true" type="xsd:string"/>
+     <element name="salesCode" nillable="true" type="xsd:string"/>
+     <element name="salesName" nillable="true" type="xsd:string"/>
+     <element name="salesType" nillable="true" type="xsd:string"/>
+     <element name="specialRemark" nillable="true" type="xsd:string"/>
+     <element name="sumInsured" nillable="true" type="xsd:decimal"/>
+     <element name="surrenderCharge" nillable="true" type="xsd:decimal"/>
+     <element name="suspendDate" nillable="true" type="xsd:dateTime"/>
+     <element name="terminationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="terminationReason" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+     <element name="yearPremium" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyLogResultItemDTO">
+    <sequence>
+     <element name="endorsementNo" nillable="true" type="xsd:string"/>
+     <element name="endorsementSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="endorsementType" nillable="true" type="xsd:string"/>
+     <element name="errorReason" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="singleResponseCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyLogResultDTO">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="items" nillable="true" type="impl:ArrayOf_tns2_PolicyLogResultItemDTO"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyLogAsyncResultDTO">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="groupSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerQueryDTO">
+    <sequence>
+     <element name="applicationFormNo" nillable="true" type="xsd:string"/>
+     <element name="applicationIdentity" nillable="true" type="xsd:string"/>
+     <element name="birthday" nillable="true" type="xsd:dateTime"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AccidentResultArrayDTO">
+    <sequence>
+     <element name="accidentResult" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClaimantArrayDTO">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClaimInfoArrayDTO">
+    <sequence>
+     <element name="accidentReason" nillable="true" type="xsd:string"/>
+     <element name="accidentResultArrayDTOs" nillable="true" type="impl:ArrayOf_tns2_AccidentResultArrayDTO"/>
+     <element name="accidentTime" nillable="true" type="xsd:dateTime"/>
+     <element name="accidents" nillable="true" type="xsd:string"/>
+     <element name="claimAmount" nillable="true" type="xsd:decimal"/>
+     <element name="claimCode" nillable="true" type="xsd:string"/>
+     <element name="claimNo" nillable="true" type="xsd:string"/>
+     <element name="claimantArrayDTOs" nillable="true" type="impl:ArrayOf_tns2_ClaimantArrayDTO"/>
+     <element name="company" nillable="true" type="xsd:string"/>
+     <element name="endCaseDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+     <element name="registrationNo" nillable="true" type="xsd:string"/>
+     <element name="reportNo" nillable="true" type="xsd:string"/>
+     <element name="treatmentAdvice" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EndorsementInfoDTO">
+    <sequence>
+     <element name="company" nillable="true" type="xsd:string"/>
+     <element name="effectiveDate" nillable="true" type="xsd:dateTime"/>
+     <element name="endorsementNo" nillable="true" type="xsd:string"/>
+     <element name="endorsementSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="endorsementType" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CoverageInfoDTO">
+    <sequence>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageName" nillable="true" type="xsd:string"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PolicyInfoDTO">
+    <sequence>
+     <element name="applicationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="applicationFormNo" nillable="true" type="xsd:string"/>
+     <element name="company" nillable="true" type="xsd:string"/>
+     <element name="contractStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageInfoDTOs" nillable="true" type="impl:ArrayOf_tns2_CoverageInfoDTO"/>
+     <element name="policyEndDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policySequenceNo" nillable="true" type="xsd:string"/>
+     <element name="policyStartDate" nillable="true" type="xsd:dateTime"/>
+     <element name="premium" nillable="true" type="xsd:decimal"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerQueryResultDTO">
+    <sequence>
+     <element name="claimInfoArrayDTOs" nillable="true" type="impl:ArrayOf_tns2_ClaimInfoArrayDTO"/>
+     <element name="endorsementInfoDTOs" nillable="true" type="impl:ArrayOf_tns2_EndorsementInfoDTO"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="policyInfoDTOs" nillable="true" type="impl:ArrayOf_tns2_PolicyInfoDTO"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GroupCustomerInfoQueryDTO">
+    <sequence>
+     <element name="applicationFormNo" nillable="true" type="xsd:string"/>
+     <element name="critCode" nillable="true" type="xsd:string"/>
+     <element name="critType" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusSpecialCoverageDTO">
+    <sequence>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusSpecialUpCoverageDTO">
+    <sequence>
+     <element name="UPStatusSpecialCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_UPStatusSpecialCoverageDTO"/>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusPolicyInsuredDTO">
+    <sequence>
+     <element name="UPStatusSpecialUpCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_UPStatusSpecialUpCoverageDTO"/>
+     <element name="customerNo" nillable="true" type="xsd:string"/>
+     <element name="offerStatus" nillable="true" type="xsd:string"/>
+     <element name="subEndDate" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusCoverageDTO">
+    <sequence>
+     <element name="liabilityCode" nillable="true" type="xsd:string"/>
+     <element name="liabilityExpireDate" nillable="true" type="xsd:dateTime"/>
+     <element name="liabilityStatus" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusUpCoverageDTO">
+    <sequence>
+     <element name="UPStatusCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_UPStatusCoverageDTO"/>
+     <element name="comCoverageCode" nillable="true" type="xsd:string"/>
+     <element name="coverageCode" nillable="true" type="xsd:string"/>
+     <element name="coveragePremium" nillable="true" type="xsd:decimal"/>
+     <element name="coverageStatus" nillable="true" type="xsd:string"/>
+     <element name="coverageSuminsured" nillable="true" type="xsd:decimal"/>
+     <element name="coverageType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusInfoDTO">
+    <sequence>
+     <element name="UPStatusPolicyInsuredDTO" nillable="true" type="impl:ArrayOf_tns2_UPStatusPolicyInsuredDTO"/>
+     <element name="UPStatusUpCoverageDTOs" nillable="true" type="impl:ArrayOf_tns2_UPStatusUpCoverageDTO"/>
+     <element name="autoPaidUp" nillable="true" type="xsd:string"/>
+     <element name="contractStatus" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="pauseDate" nillable="true" type="xsd:dateTime"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policyStatusUpdateType" nillable="true" type="xsd:string"/>
+     <element name="regularClearing" nillable="true" type="xsd:string"/>
+     <element name="regularClearingDate" nillable="true" type="xsd:dateTime"/>
+     <element name="regularClearingMark" nillable="true" type="xsd:string"/>
+     <element name="renewalTimes" nillable="true" type="xsd:decimal"/>
+     <element name="terminationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="terminationReason" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusResultDTO">
+    <sequence>
+     <element name="errorReason" nillable="true" type="xsd:string"/>
+     <element name="policyNo" nillable="true" type="xsd:string"/>
+     <element name="policyStatusUpdateType" nillable="true" type="xsd:string"/>
+     <element name="singleResponseCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusResultsDTO">
+    <sequence>
+     <element name="UPStatusResultDTOs" nillable="true" type="impl:ArrayOf_tns2_UPStatusResultDTO"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UPStatusAsyncResultDTO">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="groupSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://insurance.health.ebao.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://asyclaim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://dto.insurance.health.ebao.com"/>
+   <import namespace="http://claim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_AccidentResultDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AccidentResultDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ApprovalReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ApprovalReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_MedicalFeeDetailDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:MedicalFeeDetailDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_CostItemDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CostItemDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_DiagnosisDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:DiagnosisDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_OperationDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:OperationDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_WesternMedicineDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:WesternMedicineDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_BirthClinicReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:BirthClinicReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_BirthHospitalReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:BirthHospitalReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClinicReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClinicReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClmCallerDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClmCallerDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClmClaimantDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClmClaimantDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_CooperationHospitalReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CooperationHospitalReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_HospitalReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:HospitalReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_OrdinaryClinicReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:OrdinaryClinicReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_OrdinaryHospitalReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:OrdinaryHospitalReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_CoveragePaymentDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CoveragePaymentDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyPaymentDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyPaymentDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SegmentationReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SegmentationReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialReceiptDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialReceiptDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClaimInfoDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClaimInfoDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns3_ClaimResult">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:ClaimResult[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyGroupphDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyGroupphDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyBenefitDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyBenefitDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyAmountDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyAmountDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialUnderWritingDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialUnderWritingDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyUpcoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyUpcoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyInsuredDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyInsuredDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyPersonphDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyPersonphDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyAmountDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyAmountDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UnderWritingDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UnderWritingDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyUpcoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyUpcoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyResultDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyResultDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_EndorsementTypeDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:EndorsementTypeDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyGroupPHLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyGroupPHLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyBenefitLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyBenefitLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyAmountLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyAmountLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyCoverageLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyCoverageLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialUnderWritingLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialUnderWritingLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SpecialPolicyUpcoverageLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:SpecialPolicyUpcoverageLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyInsuredLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyInsuredLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyPersonPHLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyPersonPHLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyAmountLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyAmountLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyCoverageLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyCoverageLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UnderWritingLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UnderWritingLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyUpcoverageLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyUpcoverageLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyLogDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyLogDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyLogResultItemDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyLogResultItemDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_AccidentResultArrayDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AccidentResultArrayDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClaimantArrayDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClaimantArrayDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_ClaimInfoArrayDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ClaimInfoArrayDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_EndorsementInfoDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:EndorsementInfoDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_CoverageInfoDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CoverageInfoDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_PolicyInfoDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:PolicyInfoDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusSpecialCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusSpecialCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusSpecialUpCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusSpecialUpCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusPolicyInsuredDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusPolicyInsuredDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusUpCoverageDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusUpCoverageDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusInfoDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusInfoDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns2_UPStatusResultDTO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:UPStatusResultDTO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://claim.datachange.insurance.health.ebao.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://asyclaim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://insurance.health.ebao.com"/>
+   <import namespace="http://dto.insurance.health.ebao.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ClaimResult">
+    <sequence>
+     <element name="claimCode" nillable="true" type="xsd:string"/>
+     <element name="claimNo" nillable="true" type="xsd:string"/>
+     <element name="errorReason" nillable="true" type="xsd:string"/>
+     <element name="singleResponseCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ClaimInfoResponseObject">
+    <sequence>
+     <element name="claimResultArray" nillable="true" type="impl:ArrayOf_tns3_ClaimResult"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://asyclaim.datachange.insurance.health.ebao.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://insurance.health.ebao.com"/>
+   <import namespace="http://dto.insurance.health.ebao.com"/>
+   <import namespace="http://claim.datachange.insurance.health.ebao.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AsyClaimInfoResponseObject">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="groupSequenceNo" nillable="true" type="xsd:string"/>
+     <element name="responseCode" nillable="true" type="xsd:string"/>
+     <element name="taskNo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateClaimStatusAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_ClaimInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelEndorsementInfoAsynResponse">
+
+      <wsdl:part name="cancelEndorsementInfoAsynReturn" type="tns1:PolicyLogAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimInfoResponse">
+
+      <wsdl:part name="getClaimInfoReturn" type="tns2:ClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimAsynResultResponse">
+
+      <wsdl:part name="getClaimAsynResultReturn" type="tns2:ClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelEndorsementInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusResponse">
+
+      <wsdl:part name="updatePolicyStatusReturn" type="tns1:UPStatusResultsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoAsynResultResponse">
+
+      <wsdl:part name="getPolicyInfoAsynResultReturn" type="tns1:PolicyResultsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupCustomerInfoResponse">
+
+      <wsdl:part name="getGroupCustomerInfoReturn" type="tns1:CustomerQueryResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupCustomerInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:GroupCustomerInfoQueryDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupPolicyRenewInfoAsynResultResponse">
+
+      <wsdl:part name="getGroupPolicyRenewInfoAsynResultReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateClaimStatusRequest">
+
+      <wsdl:part name="in0" type="tns1:ClaimInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupPolicyRenewInfoResponse">
+
+      <wsdl:part name="groupPolicyRenewInfoReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCancelEndorsementInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUpdateClaimStatusAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoResponse">
+
+      <wsdl:part name="singlePolicyEndorsementInfoReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusAsynResponse">
+
+      <wsdl:part name="updatePolicyStatusAsynReturn" type="tns1:UPStatusAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCancelEndorsementInfoAsynResultResponse">
+
+      <wsdl:part name="getCancelEndorsementInfoAsynResultReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateClaimStatusAsynResponse">
+
+      <wsdl:part name="updateClaimStatusAsynReturn" type="tns3:AsyClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupPolicyRenewInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoAsynResponse">
+
+      <wsdl:part name="getPolicyInfoAsynReturn" type="tns1:PolicyAsynResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupPolicyRenewInfoAsynResponse">
+
+      <wsdl:part name="groupPolicyRenewInfoAsynReturn" type="tns1:PolicyLogAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="groupPolicyRenewInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoAsynResponse">
+
+      <wsdl:part name="getEndorsementInfoAsynReturn" type="tns1:PolicyLogAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoAsynResultResponse">
+
+      <wsdl:part name="getEndorsementInfoAsynResultReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimInfoRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_ClaimInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoAsynResponse">
+
+      <wsdl:part name="singlePolicyEndorsementInfoAsynReturn" type="tns1:PolicyLogAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoResponse">
+
+      <wsdl:part name="getEndorsementInfoReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoResponse">
+
+      <wsdl:part name="policyRenewInfoReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusAsynResultResponse">
+
+      <wsdl:part name="updatePolicyStatusAsynResultReturn" type="tns1:UPStatusResultsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUpdateClaimStatusAsynResultResponse">
+
+      <wsdl:part name="getUpdateClaimStatusAsynResultReturn" type="tns2:ClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoAsynResultResponse">
+
+      <wsdl:part name="policyRenewInfoAsynResultReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimAsynResponse">
+
+      <wsdl:part name="getClaimAsynReturn" type="tns3:AsyClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_UPStatusInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_UPStatusInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelEndorsementInfoResponse">
+
+      <wsdl:part name="cancelEndorsementInfoReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGroupPolicyRenewInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePolicyStatusAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelEndorsementInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyLogDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerInfoRequest">
+
+      <wsdl:part name="in0" type="tns1:CustomerQueryDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getClaimAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_ClaimInfoDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoResponse">
+
+      <wsdl:part name="getPolicyInfoReturn" type="tns1:PolicyResultsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPolicyInfoAsynRequest">
+
+      <wsdl:part name="in0" type="impl:ArrayOf_tns2_PolicyDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="singlePolicyEndorsementInfoAsynResultResponse">
+
+      <wsdl:part name="singlePolicyEndorsementInfoAsynResultReturn" type="tns1:PolicyLogResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateClaimStatusResponse">
+
+      <wsdl:part name="updateClaimStatusReturn" type="tns2:ClaimInfoResponseObject"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEndorsementInfoAsynResultRequest">
+
+      <wsdl:part name="in0" type="tns1:QueryCommonParamsDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="policyRenewInfoAsynResponse">
+
+      <wsdl:part name="policyRenewInfoAsynReturn" type="tns1:PolicyLogAsyncResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomerInfoResponse">
+
+      <wsdl:part name="getCustomerInfoReturn" type="tns1:CustomerQueryResultDTO"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="InsuranceWebServicePort">
+
+      <wsdl:operation name="getClaimInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:getClaimInfoRequest" name="getClaimInfoRequest"/>
+
+         <wsdl:output message="impl:getClaimInfoResponse" name="getClaimInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClaimAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:getClaimAsynRequest" name="getClaimAsynRequest"/>
+
+         <wsdl:output message="impl:getClaimAsynResponse" name="getClaimAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClaimAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getClaimAsynResultRequest" name="getClaimAsynResultRequest"/>
+
+         <wsdl:output message="impl:getClaimAsynResultResponse" name="getClaimAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:getPolicyInfoRequest" name="getPolicyInfoRequest"/>
+
+         <wsdl:output message="impl:getPolicyInfoResponse" name="getPolicyInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:getPolicyInfoAsynRequest" name="getPolicyInfoAsynRequest"/>
+
+         <wsdl:output message="impl:getPolicyInfoAsynResponse" name="getPolicyInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getPolicyInfoAsynResultRequest" name="getPolicyInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:getPolicyInfoAsynResultResponse" name="getPolicyInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:getEndorsementInfoRequest" name="getEndorsementInfoRequest"/>
+
+         <wsdl:output message="impl:getEndorsementInfoResponse" name="getEndorsementInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:getEndorsementInfoAsynRequest" name="getEndorsementInfoAsynRequest"/>
+
+         <wsdl:output message="impl:getEndorsementInfoAsynResponse" name="getEndorsementInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getEndorsementInfoAsynResultRequest" name="getEndorsementInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:getEndorsementInfoAsynResultResponse" name="getEndorsementInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:getCustomerInfoRequest" name="getCustomerInfoRequest"/>
+
+         <wsdl:output message="impl:getCustomerInfoResponse" name="getCustomerInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupCustomerInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:getGroupCustomerInfoRequest" name="getGroupCustomerInfoRequest"/>
+
+         <wsdl:output message="impl:getGroupCustomerInfoResponse" name="getGroupCustomerInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatus" parameterOrder="in0">
+
+         <wsdl:input message="impl:updatePolicyStatusRequest" name="updatePolicyStatusRequest"/>
+
+         <wsdl:output message="impl:updatePolicyStatusResponse" name="updatePolicyStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateClaimStatus" parameterOrder="in0">
+
+         <wsdl:input message="impl:updateClaimStatusRequest" name="updateClaimStatusRequest"/>
+
+         <wsdl:output message="impl:updateClaimStatusResponse" name="updateClaimStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateClaimStatusAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:updateClaimStatusAsynRequest" name="updateClaimStatusAsynRequest"/>
+
+         <wsdl:output message="impl:updateClaimStatusAsynResponse" name="updateClaimStatusAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUpdateClaimStatusAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getUpdateClaimStatusAsynResultRequest" name="getUpdateClaimStatusAsynResultRequest"/>
+
+         <wsdl:output message="impl:getUpdateClaimStatusAsynResultResponse" name="getUpdateClaimStatusAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:singlePolicyEndorsementInfoRequest" name="singlePolicyEndorsementInfoRequest"/>
+
+         <wsdl:output message="impl:singlePolicyEndorsementInfoResponse" name="singlePolicyEndorsementInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:singlePolicyEndorsementInfoAsynRequest" name="singlePolicyEndorsementInfoAsynRequest"/>
+
+         <wsdl:output message="impl:singlePolicyEndorsementInfoAsynResponse" name="singlePolicyEndorsementInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:singlePolicyEndorsementInfoAsynResultRequest" name="singlePolicyEndorsementInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:singlePolicyEndorsementInfoAsynResultResponse" name="singlePolicyEndorsementInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelEndorsementInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:cancelEndorsementInfoRequest" name="cancelEndorsementInfoRequest"/>
+
+         <wsdl:output message="impl:cancelEndorsementInfoResponse" name="cancelEndorsementInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelEndorsementInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:cancelEndorsementInfoAsynRequest" name="cancelEndorsementInfoAsynRequest"/>
+
+         <wsdl:output message="impl:cancelEndorsementInfoAsynResponse" name="cancelEndorsementInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCancelEndorsementInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getCancelEndorsementInfoAsynResultRequest" name="getCancelEndorsementInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:getCancelEndorsementInfoAsynResultResponse" name="getCancelEndorsementInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:policyRenewInfoRequest" name="policyRenewInfoRequest"/>
+
+         <wsdl:output message="impl:policyRenewInfoResponse" name="policyRenewInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:policyRenewInfoAsynRequest" name="policyRenewInfoAsynRequest"/>
+
+         <wsdl:output message="impl:policyRenewInfoAsynResponse" name="policyRenewInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:policyRenewInfoAsynResultRequest" name="policyRenewInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:policyRenewInfoAsynResultResponse" name="policyRenewInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatusAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:updatePolicyStatusAsynRequest" name="updatePolicyStatusAsynRequest"/>
+
+         <wsdl:output message="impl:updatePolicyStatusAsynResponse" name="updatePolicyStatusAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatusAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:updatePolicyStatusAsynResultRequest" name="updatePolicyStatusAsynResultRequest"/>
+
+         <wsdl:output message="impl:updatePolicyStatusAsynResultResponse" name="updatePolicyStatusAsynResultResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupPolicyRenewInfo" parameterOrder="in0">
+
+         <wsdl:input message="impl:groupPolicyRenewInfoRequest" name="groupPolicyRenewInfoRequest"/>
+
+         <wsdl:output message="impl:groupPolicyRenewInfoResponse" name="groupPolicyRenewInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupPolicyRenewInfoAsyn" parameterOrder="in0">
+
+         <wsdl:input message="impl:groupPolicyRenewInfoAsynRequest" name="groupPolicyRenewInfoAsynRequest"/>
+
+         <wsdl:output message="impl:groupPolicyRenewInfoAsynResponse" name="groupPolicyRenewInfoAsynResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupPolicyRenewInfoAsynResult" parameterOrder="in0">
+
+         <wsdl:input message="impl:getGroupPolicyRenewInfoAsynResultRequest" name="getGroupPolicyRenewInfoAsynResultRequest"/>
+
+         <wsdl:output message="impl:getGroupPolicyRenewInfoAsynResultResponse" name="getGroupPolicyRenewInfoAsynResultResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="InsuranceWebServiceSoapBinding" type="impl:InsuranceWebServicePort">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getClaimInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClaimInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClaimInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClaimAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClaimAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClaimAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getClaimAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getClaimAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getClaimAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPolicyInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPolicyInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPolicyInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPolicyInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPolicyInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPolicyInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPolicyInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEndorsementInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEndorsementInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEndorsementInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEndorsementInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEndorsementInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEndorsementInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEndorsementInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomerInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomerInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomerInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupCustomerInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGroupCustomerInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGroupCustomerInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePolicyStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePolicyStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateClaimStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateClaimStatusRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateClaimStatusResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateClaimStatusAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateClaimStatusAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateClaimStatusAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUpdateClaimStatusAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUpdateClaimStatusAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUpdateClaimStatusAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="singlePolicyEndorsementInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="singlePolicyEndorsementInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="singlePolicyEndorsementInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="singlePolicyEndorsementInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="singlePolicyEndorsementInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="singlePolicyEndorsementInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="singlePolicyEndorsementInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelEndorsementInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelEndorsementInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelEndorsementInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelEndorsementInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelEndorsementInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelEndorsementInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCancelEndorsementInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCancelEndorsementInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCancelEndorsementInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="policyRenewInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="policyRenewInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="policyRenewInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="policyRenewInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="policyRenewInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="policyRenewInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="policyRenewInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatusAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePolicyStatusAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePolicyStatusAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePolicyStatusAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePolicyStatusAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePolicyStatusAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupPolicyRenewInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="groupPolicyRenewInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="groupPolicyRenewInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="groupPolicyRenewInfoAsyn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="groupPolicyRenewInfoAsynRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="groupPolicyRenewInfoAsynResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGroupPolicyRenewInfoAsynResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGroupPolicyRenewInfoAsynResultRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGroupPolicyRenewInfoAsynResultResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://insurance.health.ebao.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="InsuranceWebServicePortService">
+
+      <wsdl:port binding="impl:InsuranceWebServiceSoapBinding" name="InsuranceWebService">
+
+         <wsdlsoap:address location="http://172.16.7.149:7001/circauto/webservice/InsuranceWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

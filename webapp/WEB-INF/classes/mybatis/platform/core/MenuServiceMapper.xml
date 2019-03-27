@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.sinosoft.platform.core.domain.mapper.MenuServiceMapper">
+    <select id="queryPrivilegecode" parameterType="com.sinosoft.platform.core.domain.model.DefPrivilege" resultType="com.sinosoft.platform.core.domain.model.DefPrivilege">
+        SELECT PRIVILEGECODE "privilegecode"
+		  FROM T_DEF_PRIVILEGE
+		 WHERE PRIVILEGETYPE LIKE '%menu%'
+		 ORDER BY TO_NUMBER(PRIVILEGECODE) DESC
+    </select>  
+    
+    <!-- 判断菜单是否有子菜单 -->
+    <select id="queryMenuChildren" parameterType="com.sinosoft.platform.core.domain.model.DefPrivilege" resultType="com.sinosoft.platform.core.domain.model.DefPrivilege">
+	    
+	    SELECT PRIVILEGECODE "privilegecode"
+		  FROM T_DEF_PRIVILEGE
+		 WHERE PRIVILEGETYPE LIKE '%menu%'
+		   AND PID = #{id}
+	  
+     </select> 
+     
+     
+    <!-- 修改菜单加载顺序 -->
+    <update id="updateAllAfterNewNode" parameterType="map" >
+	    update T_DEF_PRIVILEGE
+	    set NUM = NUM + 1
+	      where privilegetype like '%menu%' 
+	      and num>= #{bd1} and id!=#{bd1}
+  	</update>
+    
+    <sql id="queryMenuListInfoSQL">
+	   select  tdp.id 			      "id",
+	           cd.code_name    	      "codeName",
+		       tdp.privilegecode      "privilegecode", 
+		       tdp.privilegename      "privilegename", 
+		       tdp.privilege_describe "privilegeDescribe",
+		       tdp.privilege_sign     "privilegeSign",
+	       	   tdp.url            	  "url"
+	   from t_def_privilege tdp
+	   LEFT JOIN t_def_code_dict cd ON cd.code=tdp.privilege_sign
+		where 1=1
+		and cd.code_type='STATUS'
+		<if test="privilegecode!=null and privilegecode!=''">
+		   	and tdp.privilegecode like  '%' || #{privilegecode} || '%'
+		</if>
+		<if test="privilegename!=null and privilegename!=''">
+		   	and tdp.privilegename like  '%' || #{privilegename} || '%'
+		</if>
+		<if test="privilegeDescribe!=null and privilegeDescribe!=''">
+		   	and tdp.privilege_describe like  '%' || #{privilegeDescribe} || '%'
+		</if>
+		<if test="privilegeSign!=null and privilegeSign!=''">
+		   	and tdp.privilege_sign like  '%' || #{privilegeSign} || '%'
+		</if>
+		order by tdp.id
+	</sql>
+    <!-- 菜单信息列表查询（总记录数） -->
+	<select id="queryMenuListInfoCounts" resultType="java.lang.Integer" parameterType="java.util.Map" >
+		select count(1) from 
+		(
+      	  	<include refid="queryMenuListInfoSQL"/>
+        )
+	</select>
+	
+	<!-- 菜单信息列表查询（分页查询） -->
+	<select id="queryMenuListInfoPages" resultType="java.util.Map" parameterType="java.util.Map" >
+        select tAlias.* from
+		(
+	         select nAlias.*, rownum r_rownum from
+	         (
+		         <include refid="queryMenuListInfoSQL"/>
+		         
+			 ) nAlias
+		) tAlias where r_rownum >=#{queryStartIndex} and #{queryEndIndex} >= r_rownum
+	</select>
+    
+</mapper>  

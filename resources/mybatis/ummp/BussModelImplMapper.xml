@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 业务模型实现处理 By Darker.Wang 2016-07-05 -->
+<mapper namespace="com.sinosoft.ummp.domain.mapper.BussModelImplMapper">
+  <resultMap id="BaseResultMap" type="com.sinosoft.ummp.domain.model.BussModelImpl">
+    <id column="BUSS_ID" jdbcType="DECIMAL" property="bussId" />
+    <result column="IMPL_ID" jdbcType="DECIMAL" property="implId" />
+    <result column="IMPL_TYPE" jdbcType="VARCHAR" property="implType" />
+    <result column="FORMAT_TYPE" jdbcType="VARCHAR" property="formatType" />
+    <result column="SEND_TYPE" jdbcType="VARCHAR" property="sendType" />
+    <result column="IS_TITLE" jdbcType="DECIMAL" property="isTitle" />
+    <result column="TITLE_INFO" jdbcType="VARCHAR" property="titleInfo" />
+    <result column="BUSS_NAME" jdbcType="VARCHAR" property="bussName"/>
+  </resultMap>
+  
+  <!-- 更具业务ID查询相关实现 -->
+  <select id="selectBybussId" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+     SELECT distinct bm.buss_id,bi.impl_id, bi.impl_type,bi.format_type,bi.send_type,
+			bm.is_title,bm.title_info,bm.buss_name
+			FROM T_DEF_BUSS_MODEL bm
+			LEFT JOIN T_DEF_BUSS_IMPL bi ON bm.buss_id = bi.buss_id
+	 WHERE bm.rc_status = 1 
+	 AND bm.buss_id = #{bussId,jdbcType=DECIMAL}
+  </select>
+  
+</mapper>

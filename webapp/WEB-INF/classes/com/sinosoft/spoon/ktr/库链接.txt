@@ -1,0 +1,12 @@
+分布式配置
+
+DB_CIIM
+(DESCRIPTION =(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 84.238.13.22)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = 84.238.13.22)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = ciim)))
+端口 -1
+用户名/密码： ciim_usr / password1
+
+DB_OFE
+(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 84.238.13.22)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED) (SERVICE_NAME = odsbrs)))
+端口 -1
+用户名/密码： ods_stg_read / password1
+
